@@ -3,28 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minimalist Tailwind Page</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'soft-white': '#f7f7f7',
-                        'deep-blue': '#1e3a8a',
-                    },
-                    boxShadow: {
-                        'soft': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
-                    },
-                }
-            }
+    <title>Minimalist Plain CSS Page</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            box-sizing: border-box;
         }
-    </script>
+
+        .card {
+            background-color: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            max-width: 28rem;
+            width: 100%;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: box-shadow 0.3s ease-in-out;
+        }
+
+        .card:hover {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        h1 {
+            font-size: 1.875rem;
+            font-weight: 300;
+            color: #1e3a8a;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        p {
+            color: #4b5563;
+            line-height: 1.625;
+            margin: 0;
+        }
+    </style>
 </head>
-<body class="bg-soft-white min-h-screen flex items-center justify-center p-4">
-    <div class="bg-white rounded-2xl shadow-soft p-8 max-w-md transition-all duration-300 ease-in-out hover:shadow-lg">
-        <h1 class="text-3xl font-light text-deep-blue mb-4 text-center">Welcome</h1>
-        <p class="text-gray-600 leading-relaxed">
+<body>
+    <div class="card">
+        <h1>Welcome</h1>
+        <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
         </p>
     </div>
