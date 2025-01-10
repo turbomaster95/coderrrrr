@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimalist Tailwind Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'soft-white': '#f7f7f7',
+                        'deep-blue': '#1e3a8a',
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+                    },
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-soft-white min-h-screen flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl shadow-soft p-8 max-w-md transition-all duration-300 ease-in-out hover:shadow-lg">
+        <h1 class="text-3xl font-light text-deep-blue mb-4 text-center">Welcome</h1>
+        <p class="text-gray-600 leading-relaxed">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        </p>
+    </div>
+</body>
+</html>
+
