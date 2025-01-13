@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <base target="_parent">
+    <link rel="icon" type="image/jpg" href="assets/favicon.jpg" />
+    <title></title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+
+      :root {
+        --red: #ffcaca;
+        --orange: #ffedc1;
+        --yellow: #feffb8;
+        --green: #c4ffcb;
+        --blue: #add8ff;
+        --purple: #ccafe9;
+        --darkgreen: #3E885B;
+        --darkblue: #7fb4f5;
+        --background: #454545;
+        --rainbowright: linear-gradient(to right, var(--red) 0%, var(--orange) 20%, var(--yellow) 40%, var(--green) 60%, var(--blue) 80%, var(--purple) 100%);
+      }
+
+      * {
+        font-family: Merriweather, Georgia, serif;
+        color: var(--purple);
+      }
+
+      html {
+        background-color: var(--background);
+      }
+
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        display: flex;
+        padding: 0.5em;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        align-content: center;
+      }
+
+      a {
+        display: inline-block;
+        color: inherit;
+        position: relative;
+        text-decoration: none;
+        transition: linear 0.2s;
+        color: var(--purple);
+      }
+
+      a:before {
+        background: var(--rainbowright);
+        content: '';
+        height: 2px;
+        position: absolute;
+        bottom: -1.5px;
+        width: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        transition: width 0.2s ease-in-out;
+      }
+
+      a:hover {
+        color: var(--white);
+      }
+
+      a:hover:before {
+        width: 0;
+      }
+
+      #left {
+        text-align: left;
+      }
+
+      #mid {
+        text-align: center;
+      }
+
+      #right {
+        text-align: right;
+      }
+
+      #left,
+      #right {
+        flex-grow: 1;
+        flex-basis: 0;
+      }
+
+      #header span {
+        animation-delay: var(--n);
+        animation: wave 1.5s linear var(--n) infinite forwards running, rainbow 3s linear var(--n) infinite forwards running;
+        position: relative;
+      }
+
+      @media screen and (prefers-reduced-motion: reduce; ) {
+        #header span {
+          animation: none;
+        }
+      }
+
+      @keyframes wave {
+        0% {
+          top: 0px;
+        }
+
+        25% {
+          top: -1px;
+        }
+
+        50% {
+          top: 0px;
+        }
+
+        75% {
+          top: 1px;
+        }
+
+        100% {
+          top: 0px;
+        }
+      }
+
+      @keyframes rainbow {
+        0% {
+          color: var(--red);
+        }
+
+        17% {
+          color: var(--orange);
+        }
+
+        33% {
+          color: var(--yellow);
+        }
+
+        50% {
+          color: var(--green);
+        }
+
+        67% {
+          color: var(--blue);
+        }
+
+        83% {
+          color: var(--purple);
+        }
+
+        100% {
+          color: var(--red);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <span id="left">⥼ <a href="redirect.html?to=prev" id="prev">prev</a>
+    </span>
+    <span id="mid">
+      <a href="https://webring.bucketfish.me" id="header">bucket webring</a>
+    </span>
+    <span id="right">
+      <a href="redirect.html?to=next" id="next">next</a> ⥽ </span>
+  </body>
+  <script>
+    const DATA_FOR_WEBRING = `https://raw.githubusercontent.com/bucketfish/bucket-webring/master/webring.json`;
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const lightmode = urlParams.get("lightmode");
+    const name = urlParams.get('name');
+    if (lightmode) {
+      console.log("AAAA");
+      var r = document.querySelector(':root');
+      r.style.setProperty('--red', '#B80000');
+      r.style.setProperty('--orange', '#B88400');
+      r.style.setProperty('--yellow', '#B5B800');
+      r.style.setProperty('--green', '#00B815');
+      r.style.setProperty('--blue', '#0069CC');
+      r.style.setProperty('--purple', '#7030B0');
+      r.style.setProperty('--background', '#fefefa');
+      r.style.setProperty('--rainbowright', 'linear-gradient(to right, var(--red) 0%, var(--orange) 20%, var(--yellow) 40%, var(--green) 60%, var(--blue) 80%,  var(--purple) 100%)');
+      r.style.setProperty('--hrainbow', 'linear-gradient(to right, #FFFFFF00 0%, var(--lessred) 14%, var(--orange) 28%, var(--yellow) 42%, var(--green) 56%, var(--blue) 70%,  var(--lesspurple) 84%, #FFFFFF00 100%);');
+    }
+    const left = document.getElementById("prev")
+    const right = document.getElementById("next")
+    fetch(DATA_FOR_WEBRING).then((response) => response.json()).then((sites) => {
+      left.href += "&name=" + name;
+      right.href += "&name=" + name;
+    });
+
+    function funheader() {
+      var parent = document.getElementById("header");
+      var string = parent.innerHTML;
+      parent.innerHTML = "";
+      string.split("");
+      var i = 0,
+        length = string.length;
+      for (i; i < length; i++) {
+        parent.innerHTML += " < span style = '--n:"+ (100 * i - 10000 + '
+        ms ') + ";' > " + string[i] + " < /span>";
+      }
+    }
+    funheader()
+  </script>
+</html>
