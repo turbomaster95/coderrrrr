@@ -158,17 +158,15 @@
     </style>
   </head>
   <body>
-    <span id="left">⥼ <a href="https://webring.bucketfish.me/redirect.html?to=prev" id="prev">prev</a>
+    <span id="left">⥼ <a href="https://webring.bucketfish.me/redirect.html?to=prev&name=Deva Midhun" id="prev">prev</a>
     </span>
     <span id="mid">
       <a href="https://webring.bucketfish.me" id="header">bucket webring</a>
     </span>
     <span id="right">
-      <a href="https://webring.bucketfish.me/redirect.html?to=next" id="next">next</a> ⥽ </span>
+      <a href="https://webring.bucketfish.me/redirect.html?to=next&name=Deva Midhun" id="next">next</a> ⥽ </span>
   </body>
   <script>
-    const DATA_FOR_WEBRING = `https://raw.githubusercontent.com/bucketfish/bucket-webring/master/webring.json`;
-    const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     const lightmode = urlParams.get("lightmode");
     const name = "Deva Midhun"
@@ -185,12 +183,6 @@
       r.style.setProperty('--rainbowright', 'linear-gradient(to right, var(--red) 0%, var(--orange) 20%, var(--yellow) 40%, var(--green) 60%, var(--blue) 80%,  var(--purple) 100%)');
       r.style.setProperty('--hrainbow', 'linear-gradient(to right, #FFFFFF00 0%, var(--lessred) 14%, var(--orange) 28%, var(--yellow) 42%, var(--green) 56%, var(--blue) 70%,  var(--lesspurple) 84%, #FFFFFF00 100%);');
     }
-    const left = document.getElementById("prev")
-    const right = document.getElementById("next")
-    fetch(DATA_FOR_WEBRING).then((response) => response.json()).then((sites) => {
-      left.href += "&name=" + name;
-      right.href += "&name=" + name;
-    });
 
     function funheader() {
       var parent = document.getElementById("header");
