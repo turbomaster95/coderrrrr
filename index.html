@@ -47,12 +47,24 @@
             line-height: 1.625;
             margin: 0;
         }
+        #statuscafe {
+            padding: .5em;
+            background-color: azure;
+            border: 1px solid midnightblue;
+        }
+        #statuscafe-username {
+            margin-bottom: .5em;
+        }
+        #statuscafe-content {
+            margin: 0 1em 0.5em 1em;
+        }
     </style>
 </head>
 <body>
     <div class="card">
         <h1>Welcome to coderrrrr.site</h1>
-        <a href="https://status.cafe/users/coder"><img src="https://status.cafe/users/coder/badge.png" alt="Status Cafe Profile"/></a>
+        <!-- <a href="https://status.cafe/users/coder"><img src="https://status.cafe/users/coder/badge.png" alt="Status Cafe Profile"/></a> -->
+        <div id="statuscafe"><div id="statuscafe-username"></div><div id="statuscafe-content"></div></div><script src="https://status.cafe/current-status.js?name=coder" defer></script>
         <p>
             So... Bomberfish DM'ed me on discord to kindly take his site down from my domain. So here we are! This is a small placeholder page while I work out the bugs in my actual site. You can find a production version of it at <a href="https://demo.coderrrrr.site">demo.coderrrrr.site</a>.
         </p>
