@@ -1,0 +1,203 @@
+/* these are the colors! there's only three. the background, the text, and the accent color. */
+
+:root {
+    --bgcolor: #1f1c1c;
+    --txtcolor: #ece9e3;
+    --popcolor: #DD1155;
+}
+
+/* JAUNTY TITLES - DELETE THIS SECTION IF YOU WANT NORMAL HEADERS IN YOUR BOXES */
+.box>h1 {
+    border: 2px var(--txtcolor) solid;
+    background-color: var(--bgcolor);
+    width: fit-content;
+    padding: 10px;
+    margin-left: -30px;
+    margin-top: -50px;
+    transform: rotate(-5deg)
+}
+
+.box>h2 {
+    margin-top: 0;
+}
+
+.reversebox>h1 {
+    border: 2px var(--popcolor) solid;
+    background-color: var(--txtcolor);
+    transform: rotate(5deg);
+    position: absolute;
+    right: 0;
+    margin-right: -15px;
+    margin-left: unset;
+}
+
+/* END OF JAUNTY TITLES */
+
+/* the rest of the layout vv */
+
+::selection {
+    background-color: var(--popcolor)
+}
+
+* {
+    box-sizing: border-box;
+    scrollbar-color: var(--popcolor) var(--bgcolor);
+    scrollbar-width: thin;
+}
+
+body {
+    background-color: var(--bgcolor);
+    color: var(--txtcolor);
+    font-family: Verdana, Helvetica, sans-serif;
+    text-underline-offset: 1px;
+}
+
+u {
+    text-decoration: underline double var(--popcolor);
+}
+
+a {
+    font-weight: bolder;
+    color: var(--popcolor);
+    text-decoration: underline dotted 1px;
+}
+
+a:hover {
+    color: var(--txtcolor);
+    background-color: var(--popcolor)
+}
+
+img {
+    max-width: 100%;
+}
+
+
+.container {
+    /* everything in this layout is inside this container. increase the percentage and max-width to make it wider! */
+    width: 50%;
+    margin: auto;
+    min-width: 400px;
+    max-width:700px;
+}
+
+.header>h1 {
+    font-size: 50pt;
+    line-height: 0.9;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 0;
+}
+
+.header>h2 {
+    text-align: right;
+    font-family: Georgia;
+    margin-top: 0px;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 13pt;
+}
+
+.bio {
+    min-height: 150px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+    align-items: center;
+    font-size: 10pt;
+}
+
+.bio>div {
+    max-width: 70%;
+}
+
+#profilepic {
+    width: 128px;
+    height: 128px;
+    border-radius: 100%;
+    object-fit: cover;
+    outline: var(--txtcolor) 2px solid;
+    outline-offset: 2px;
+}
+
+#navbar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    color: var(--bgcolor);
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 5px;
+    background-color: var(--txtcolor);
+}
+
+#navbar>a {
+    color: var(--bgcolor);
+    font-weight: bolder;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 10px;
+}
+
+#navbar>a:hover {
+    border-radius: 5px;
+    background-color: var(--popcolor);
+    color: var(--txtcolor);
+}
+
+
+
+.box {
+    padding: 15px;
+    margin-top: 50px;
+    border: var(--txtcolor) 2px solid;
+    font-size: 11pt;
+}
+
+
+.reversebox {
+    background-color: var(--txtcolor);
+    color: var(--bgcolor);
+    border: var(--popcolor) 2px solid;
+    position: relative;
+}
+
+
+#pagetop {
+    position: fixed;
+    bottom: 20px;
+    right: 25px;
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    color: var(--popcolor);
+    opacity: 0.4;
+}
+
+#pagetop:hover {
+    opacity: 1;
+    background-color: unset;
+}
+
+.footer {
+    text-align: center;
+    font-size: 9pt;
+    padding: 25px;
+    padding-top: 5px;
+    margin-top: 100px;
+    border-top: 1px var(--txtcolor) solid;
+}
+
+/* adjustment for small screens */
+@media only screen and (max-width: 700px) {
+    .container {
+        width: 95%;
+        min-width: unset;
+    }
+
+    #profilepic {
+        height: 90px;
+        width: 90px;
+    }
+}
