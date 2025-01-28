@@ -35,7 +35,7 @@
     margin-top: 0;
 }
 
-.reversebox>h1 {
+/* .reversebox>h1 {
     border: 2px var(--popcolor) solid;
     background-color: var(--txtcolor);
     transform: rotate(5deg);
@@ -43,9 +43,9 @@
     right: 0;
     margin-right: -15px;
     margin-left: unset;
-}
+} */
 
-.reversetitle>h1 {
+.reversebox>h1 {
     border: 2px var(--popcolor) solid;
     background-color: var(--bgcolor);
     transform: rotate(5deg);
