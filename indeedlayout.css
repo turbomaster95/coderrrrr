@@ -35,7 +35,7 @@
     margin-top: 0;
 }
 
-/* .reversebox>h1 {
+.reversebox>h1 {
     border: 2px var(--popcolor) solid;
     background-color: var(--txtcolor);
     transform: rotate(5deg);
@@ -43,13 +43,12 @@
     right: 0;
     margin-right: -15px;
     margin-left: unset;
-} */
+}
 
-.reversebox>h1 {
+.reversetitle>h1 {
     border: 2px var(--popcolor) solid;
     background-color: var(--bgcolor);
     transform: rotate(5deg);
-    color: var(--txtcolor);
     position: absolute;
     right: 0;
     margin-right: -15px;
@@ -188,6 +187,12 @@ img {
     position: relative;
 }
 
+.reversetitle {
+    background-color: var(--bgcolor);
+    color: var(--txtcolor);
+    border: var(--popcolor) 2px solid;
+    position: relative;
+}
 
 #pagetop {
     position: fixed;
