@@ -49,6 +49,7 @@
     border: 2px var(--popcolor) solid;
     background-color: var(--bgcolor);
     transform: rotate(5deg);
+    color: var(--txtcolor);
     position: absolute;
     right: 0;
     margin-right: -15px;
