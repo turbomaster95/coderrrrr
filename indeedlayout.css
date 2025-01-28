@@ -45,6 +45,16 @@
     margin-left: unset;
 }
 
+.reversetitle>h1 {
+    border: 2px var(--popcolor) solid;
+    background-color: var(--bgcolor);
+    transform: rotate(5deg);
+    position: absolute;
+    right: 0;
+    margin-right: -15px;
+    margin-left: unset;
+}
+
 /* END OF JAUNTY TITLES */
 
 /* the rest of the layout vv */
