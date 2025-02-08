@@ -7,19 +7,19 @@ export default function (req: VercelRequest, res: VercelResponse) {
   res.end(`{
   "subject": "acct:coder@coderrrrr.site",
   "aliases": [
-    "https://coderrrrr.site/@coder",
-    "https://coderrrrr.site/users/coder"
+    "https://coderrrrr.site/coder",
+    "https://coderrrrr.site/@coder"
   ],
   "links": [
     {
       "rel": "http://webfinger.net/rel/profile-page",
       "type": "text/html",
-      "href": "https://coderrrrr.site/@coder"
+      "href": "https://coderrrrr.site/coder"
     },
     {
       "rel": "self",
       "type": "application/activity+json",
-      "href": "https://coderrrrr.site/users/coder"
+      "href": "https://coderrrrr.site/coder"
     },
     {
       "rel": "http://ostatus.org/schema/1.0/subscribe",
