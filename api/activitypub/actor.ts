@@ -19,6 +19,8 @@ export default async function (req: VercelRequest, res: VercelResponse) {
     "inbox": "https://coderrrrr.site/api/activitypub/inbox",
     "preferredUsername": "coder",
     "name": "Deva Midhun's blog",
+    "discoverable": true,
+    "indexable": true,
     "summary": "Software developer & self-hosting enthusiast.",
     "icon": {
       "type": "Image",
