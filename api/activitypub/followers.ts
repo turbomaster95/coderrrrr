@@ -14,18 +14,21 @@ if (!admin.apps.length) {
 const db = admin.firestore();
 
 export default async function (req: VercelRequest, res: VercelResponse) {
-  const collection = db.collection('followers');
-  const actors = await collection.select("actor").get();
+  try {
+    const collection = db.collection('followers');
+    const actors = await collection.select("actor").get();
 
-  const output = { 
-    "@context": "https://www.w3.org/ns/activitystreams", 
-    "id": "https://usr.cloud/@coder/following?page=1",
-    "type": "OrderedCollectionPage", 
-    "totalItems": actors.docs.length,
-    "orderedItems": actors.docs.map(item=>item.get("actor"))
+    const output = {
+      "@context": "https://www.w3.org/ns/activitystreams",
+      "id": "https://coderrrrr.site/api/activitypub/followers",
+      "type": "OrderedCollection",
+      "totalItems": actors.docs.length,
+      "orderedItems": actors.docs.map(item => item.get("actor"))
+    };
+
+    res.status(200).setHeader("Content-Type", "application/activity+json").json(output);
+  } catch (error) {
+    console.error("Error fetching followers:", error);
+    res.status(500).json({ error: "Internal Server Error" });
   }
-
-  res.statusCode = 200;
-  res.setHeader("Content-Type", `application/activity+json`);
-  res.json(output);
 };

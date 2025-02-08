@@ -1,0 +1,29 @@
+{
+  "name": "coderrrrr.site",
+  "type": "module",
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.7.3"
+  },
+  "dependencies": {
+    "@firebase/app-types": "^0.9.3",
+    "@types/multiparty": "^4.2.1",
+    "@types/node": "^22.13.1",
+    "@types/uuid": "^10.0.0",
+    "@vercel/analytics": "^1.4.1",
+    "@vercel/edge": "^1.2.1",
+    "@vercel/kv": "^3.0.0",
+    "@vercel/node": "^5.1.2",
+    "@vercel/og": "^0.6.5",
+    "activitypub-core-types": "^0.3.2",
+    "ava": "^6.2.0",
+    "file-drop-element": "^1.0.1",
+    "firebase-admin": "^13.1.0",
+    "multiparty": "^4.2.3",
+    "node-fetch": "^3.3.2",
+    "uuid": "^11.0.5",
+    "vercel": "^41.0.2"
+  }
+}
