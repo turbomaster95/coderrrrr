@@ -1,6 +1,5 @@
 {
   "name": "coderrrrr.site",
-  "description": "Deva Midhun's personal website",
   "dependencies": {
     "@firebase/app-types": "^0.9.0",
     "@polymath-ai/client": "*",
