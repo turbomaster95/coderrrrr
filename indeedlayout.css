@@ -112,6 +112,14 @@ img {
     margin-bottom: 0;
 }
 
+.header>hh {
+    font-size: 50pt;
+    line-height: 0.9;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 0;
+}
+
 .header>h2 {
     text-align: right;
     font-family: Georgia;
