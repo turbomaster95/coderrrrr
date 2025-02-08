@@ -1,0 +1,66 @@
+{
+  "functions": {
+    "api/**/*": {
+      "maxDuration": 240
+    }
+  },
+  "crons": [{
+    "path": "/api/activitypub/sendNote.ts",
+    "schedule": "0 * * * *"
+  }],
+  "redirects": [
+    {
+      "source": "/amp/(.+)/",
+      "destination": "/$1/"
+    },
+    {
+      "source": "/(\\d+)/(\\d+)/(.+).html",
+      "destination": "/$3/"
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/(.+)/$",
+      "destination": "/$1/index.html"
+    },
+    {
+      "source": "/.well-known/(.*)",
+      "destination": "/api/well-known/$1"
+    },
+    {
+      "source": "/authorize_interaction",
+      "destination": "/api/activitypub/authorize_interaction.ts"
+    },
+    {
+      "source": "/coder",
+      "destination": "/api/activitypub/actor.js"
+    },
+    {
+      "source": "/followers",
+      "destination": "/api/activitypub/followers.js"
+    },
+    {
+      "source": "/following",
+      "destination": "/api/activitypub/following.js"
+    },
+    {
+      "source": "/inbox",
+      "destination": "/api/activitypub/inbox.js"
+    },
+    {
+      "source": "/outbox",
+      "destination": "/api/activitypub/outbox.js"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*).ajson",
+      "headers": [
+        {
+          "key": "content-type",
+          "value": "application/activity+json"
+        }
+      ]
+    }
+  ]
+}
