@@ -3,38 +3,54 @@ import type { VercelRequest, VercelResponse } from '@vercel/node';
 export default async function (req: VercelRequest, res: VercelResponse) {
   const { headers } = req;
 
-  if ("accept" in headers) {
-    const accept = headers["accept"];
-    if (accept != null && accept.split(",").indexOf("text/html") > -1) {
-      return res.redirect(302, "https://coderrrrr.site/").end();
-    }
+  if (headers.accept && headers.accept.includes("text/html")) {
+    res.redirect(302, "https://coderrrrr.site/");
+    return;
   }
 
-  res.statusCode = 200;
-  res.setHeader("Content-Type", `application/activity+json`);
-  res.json({
+  res.status(200).setHeader("Content-Type", "application/activity+json").json({
     "@context": ["https://www.w3.org/ns/activitystreams", { "@language": "en-US" }],
     "type": "Person",
     "id": "https://coderrrrr.site/coder",
-    "outbox": "https://coderrrrr.site/outbox",
-    "following": "https://coderrrrr.site/following",
-    "followers": "https://coderrrrr.site/followers",
-    "sharedInbox": "https://coderrrrr.site/sharedInbox"
-    "inbox": "https://coderrrrr.site/inbox",
+    "outbox": "https://coderrrrr.site/api/activitypub/outbox",
+    "following": "https://coderrrrr.site/api/activitypub/following",
+    "followers": "https://coderrrrr.site/api/activitypub/followers",
+    "sharedInbox": "https://coderrrrr.site/api/activitypub/sharedInbox",
+    "inbox": "https://coderrrrr.site/api/activitypub/inbox",
     "preferredUsername": "coder",
     "name": "Deva Midhun's blog",
-    "summary": "",
+    "summary": "Software developer & self-hosting enthusiast.",
     "icon": {
       "type": "Image",
       "mediaType": "image/png",
       "url": "https://i.ibb.co/N6J5b8WS/download20250102015611.png"
     },
+    "url": [
+      {
+        "type": "Link",
+        "mediaType": "text/html",
+        "href": "https://coderrrrr.site",
+        "name": "Website"
+      },
+      {
+        "type": "Link",
+        "mediaType": "text/html",
+        "href": "https://github.com/BomberFish",
+        "name": "GitHub"
+      },
+      {
+        "type": "Link",
+        "mediaType": "text/html",
+        "href": "https://mastodon.social/@coder",
+        "name": "Mastodon"
+      }
+    ],
     "publicKey": {
       "@context": "https://w3id.org/security/v1",
       "@type": "Key",
       "id": "https://coderrrrr.site/coder#main-key",
       "owner": "https://coderrrrr.site/coder",
-      "publicKeyPem": process.env.ACTIVITYPUB_PUBLIC_KEY
+      "publicKeyPem": process.env.ACTIVITYPUB_PUBLIC_KEY || "MISSING_PUBLIC_KEY"
     }
   });
 }
