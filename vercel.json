@@ -33,23 +33,23 @@
     },
     {
       "source": "/coder",
-      "destination": "/api/activitypub/actor.js"
+      "destination": "/api/activitypub/actor.ts"
     },
     {
       "source": "/followers",
-      "destination": "/api/activitypub/followers.js"
+      "destination": "/api/activitypub/followers.ts"
     },
     {
       "source": "/following",
-      "destination": "/api/activitypub/following.js"
+      "destination": "/api/activitypub/following.ts"
     },
     {
       "source": "/inbox",
-      "destination": "/api/activitypub/inbox.js"
+      "destination": "/api/activitypub/inbox.ts"
     },
     {
       "source": "/outbox",
-      "destination": "/api/activitypub/outbox.js"
+      "destination": "/api/activitypub/outbox.ts"
     }
   ],
   "headers": [
