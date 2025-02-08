@@ -1,6 +1,6 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 
-export default function (req: VercelRequest, res: VercelResponse) {
+export default async function (req: VercelRequest, res: VercelResponse) {
   const { headers } = req;
 
   if ("accept" in headers) {
@@ -13,12 +13,13 @@ export default function (req: VercelRequest, res: VercelResponse) {
   res.statusCode = 200;
   res.setHeader("Content-Type", `application/activity+json`);
   res.json({
-    "@context": ["https://www.w3.org/ns/activitystreams", { "@language": "en- US" }],
+    "@context": ["https://www.w3.org/ns/activitystreams", { "@language": "en-US" }],
     "type": "Person",
     "id": "https://coderrrrr.site/coder",
     "outbox": "https://coderrrrr.site/outbox",
     "following": "https://coderrrrr.site/following",
     "followers": "https://coderrrrr.site/followers",
+    "sharedInbox": "https://coderrrrr.site/sharedInbox"
     "inbox": "https://coderrrrr.site/inbox",
     "preferredUsername": "coder",
     "name": "Deva Midhun's blog",

@@ -8,7 +8,7 @@ import { readFileSync } from 'fs';
 
   It's a GET request. This doesn't post it to anyone's timeline.
 */
-export default function (req: VercelRequest, res: VercelResponse) {
+export default async function (req: VercelRequest, res: VercelResponse) {
   // All of the outbox data is generated at build time, so just return that static file.
   const file = join(cwd(), 'public', 'outbox.ajson');
   const stringified = readFileSync(file, 'utf8');

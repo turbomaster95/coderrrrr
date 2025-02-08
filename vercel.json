@@ -48,13 +48,17 @@
       "destination": "/api/activitypub/inbox.ts"
     },
     {
+      "source": "/sharedInbox",
+      "destination": "/api/activitypub/sharedInbox.ts"
+    },
+    {
       "source": "/outbox",
       "destination": "/api/activitypub/outbox.ts"
     }
   ],
   "headers": [
     {
-      "source": "/(.*).ajson",
+      "source": "/(.*).json",
       "headers": [
         {
           "key": "content-type",

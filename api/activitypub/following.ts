@@ -1,6 +1,6 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 
-export default function (req: VercelRequest, res: VercelResponse) {
+export default async function (req: VercelRequest, res: VercelResponse) {
   const output = {
     "@context": "https://www.w3.org/ns/activitystreams",
     "id": "https://coderrrrr.site/api/activitypub/following",

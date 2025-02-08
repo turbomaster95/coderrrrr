@@ -19,102 +19,73 @@ if (!admin.apps.length) {
 
 const db = admin.firestore();
 
-/*
-  Sends the latest not that hasn't yet been sent.
-*/
 export default async function (req: VercelRequest, res: VercelResponse) {
-  const { body, query, method, url, headers } = req;
-
-  if (
-    headers.authorization !== `Bearer ${process.env.CRON_SECRET}`
-  ) {
+  if (req.headers.authorization !== `Bearer ${process.env.CRON_SECRET}`) {
     return res.status(401).end("Unauthorized");
   }
 
-  const configCollection = db.collection('config');
-  const configRef = configCollection.doc("config");
+  const configRef = db.collection('config').doc("config");
   const config = await configRef.get();
+  const lastId = config.exists ? config.data()?.lastId || "" : "";
 
-  if (config.exists == false) {
-    // Config doesn't exist, make something
-    configRef.set({
-      "lastId": ""
-    });
-  }
+  // Fetch notes from outbox
+  const outboxResponse = await fetch("https://coderrrrr.site/api/activitypub/outbox");
+  const outbox = <OrderedCollection> await outboxResponse.json();
 
-  const configData = config.data();
-  let lastId = "";
-  if (configData != undefined) {
-    lastId = configData.lastId;
-  }
-
-  // Get my outbox because it contains all my notes.
-  const outboxResponse = await fetch('https://coderrrrr.site/outbox');
-  const outbox = <OrderedCollection>(await outboxResponse.json());
-
-  const followersCollection = db.collection('followers');
-  const followersQuerySnapshot = await followersCollection.get();
-
+  const followersSnapshot = await db.collection('followers').get();
   let lastSuccessfulSentId = "";
 
-  for (const followerDoc of followersQuerySnapshot.docs) {
+  const inboxes = new Set<string>(); // Track unique inboxes to avoid duplicate sending
+
+  for (const followerDoc of followersSnapshot.docs) {
     const follower = followerDoc.data();
-    try {
-      const actorUrl = (typeof follower.actor == "string") ? follower.actor : follower.actor.id;
-      console.log(`Fetching actor information for ${actorUrl}`)
-      const actorInformation = await fetchActorInformation(actorUrl);
-      if (actorInformation == undefined) {
-        // We can't send to this actor, so skip the actor. We should log it.
-        continue;
-      }
-    
-      if (actorInformation.inbox == undefined) { 
-        console.log(
-          `Actor ${actorUrl} doesn't have an inbox, so we can't send to them. ${actorInformation}`
-        );
-      }
-      const actorInbox = new URL(actorInformation.inbox.toString());
+    const actorUrl = typeof follower.actor === "string" ? follower.actor : follower.actor.id;
 
-      for (const iteIdx in (<AP.EntityReference[]>outbox.orderedItems)) {
-        // We have to break somewhere... do it after the first.
-        const item = (<AP.EntityReference[]>outbox.orderedItems)[iteIdx];
-       
-        console.log(`Checking ID ${item.id}, ${lastId}`);
-        if (item.id == `${lastId}`) {
-          lastSuccessfulSentId = item.id;
-          // We've already posted this, don't try and send it again.
-          console.log(`${item.id} has already been posted - don't attempt`)
-          break;
-        }
-       
-        if (item.object != undefined) {
-          // We might not need this.
-          item.object.published = (new Date()).toISOString();
-        }
-
-        // Item will be an entity, i.e, { Create { Note } }
-        try {
-          console.log(`Sending to ${actorInbox}`);
-
-          const response = await sendSignedRequest(actorInbox, <AP.Activity> item);
-          console.log(`Send result: ${actorInbox}`, response.status, response.statusText, await response.text());
-
-          // It's not been sent.
-          lastSuccessfulSentId = item.id; // we shouldn't really set this every time.
-        } catch (sendSignedError) {
-          console.log("Error sending signed request", sendSignedError)
-        }
-
-        break; // At some point we might want to post more than one post, so remove this.
-      }
-    } catch (ex) {
-      console.log("Error", ex);
+    console.log(`Fetching actor information for ${actorUrl}`);
+    const actorInformation = await fetchActorInformation(actorUrl);
+    if (!actorInformation || !actorInformation.inbox) {
+      console.log(`Skipping ${actorUrl}: No valid inbox`);
+      continue;
     }
+
+    const inboxUrl = actorInformation.sharedInbox || actorInformation.inbox;
+    inboxes.add(inboxUrl.toString()); // Add to set to ensure unique delivery
   }
 
-  configRef.set({
-    "lastId": lastSuccessfulSentId
-  });
+  for (const item of <AP.EntityReference[]>outbox.orderedItems) {
+    if (item.id === lastId) {
+      console.log(`${item.id} has already been posted - skipping`);
+      break;
+    }
+
+    if (item.object) {
+      item.object.published = new Date().toISOString();
+    }
+
+    for (const inboxUrl of inboxes) {
+      try {
+        console.log(`Sending to ${inboxUrl}`);
+
+        const response = await sendSignedRequest(new URL(inboxUrl), <AP.Activity> item, {
+          headers: {
+            "Accept": "application/activity+json",
+            "Content-Type": "application/activity+json"
+          }
+        });
+
+        console.log(`Send result: ${response.status} ${response.statusText}`);
+        const responseText = await response.text();
+        console.log("Response body:", responseText);
+
+        lastSuccessfulSentId = item.id;
+      } catch (error) {
+        console.error(`Error sending to ${inboxUrl}:`, error);
+      }
+    }
+    break; // Only send the latest post for now
+  }
+
+  await configRef.set({ "lastId": lastSuccessfulSentId });
 
   res.status(200).end("ok");
 };
