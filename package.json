@@ -1,6 +1,5 @@
 {
   "name": "coderrrrr.site",
-  "type": "module",
   "devDependencies": {
     "@types/bun": "latest"
   },
