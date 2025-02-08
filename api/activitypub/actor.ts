@@ -35,14 +35,14 @@ export default async function (req: VercelRequest, res: VercelResponse) {
       {
         "type": "Link",
         "mediaType": "text/html",
-        "href": "https://github.com/BomberFish",
+        "href": "https://github.com/turbomaster95",
         "name": "GitHub"
       },
       {
         "type": "Link",
         "mediaType": "text/html",
-        "href": "https://mastodon.social/@coder",
-        "name": "Mastodon"
+        "href": "https://usr.cloud/@coder",
+        "name": "Owner"
       }
     ],
     "publicKey": {
