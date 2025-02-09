@@ -27,29 +27,29 @@ export default async function (req: VercelRequest, res: VercelResponse) {
       "mediaType": "image/png",
       "url": "https://i.ibb.co/N6J5b8WS/download20250102015611.png"
     },
-    "url": [
+    "attachment": [
       {
-        "type": "Link",
-        "mediaType": "text/html",
-        "href": "https://coderrrrr.site",
+        "type": "PropertyValue",
+        "value": "<a href=\"https://coderrrrr.site\" target=\"_blank\" rel=\"nofollow noopener me\" translate=\"no\"><span class=\"invisible\">https://</span><span class=\"\">coderrrrr.site</span><span class=\"invisible\"></span></a>",
         "name": "Website"
       },
       {
-        "type": "Link",
-        "mediaType": "text/html",
-        "href": "https://github.com/turbomaster95",
+        "type": "PropertyValue",
+        "value": "<a href=\"https://github.com/turbomaster95\" target=\"_blank\" rel=\"nofollow noopener me\" translate=\"no\"><span class=\"invisible\">https://</span><span class=\"\">github.com/turbomaster95</span><span class=\"invisible\"></span></a>",
         "name": "GitHub"
       },
       {
-        "type": "Link",
-        "mediaType": "text/html",
-        "href": "https://usr.cloud/@coder",
+        "type": "PropertyValue",
+        "value": "<a href=\"https://usr.cloud/@coder\" target=\"_blank\" rel=\"nofollow noopener me\" translate=\"no\"><span class=\"invisible\">https://</span><span class=\"\">usr.cloud/@coder</span><span class=\"invisible\"></span></a>",
         "name": "Owner"
+      },
+      {
+        "type": "PropertyValue",
+        "value": "<a href=\"https://keyoxide.org/6389542B98CB868DAC73A373ED1190B780583CF6\" target=\"_blank\" rel=\"nofollow noopener me\" translate=\"no\"><span class=\"invisible\">https://</span><span class=\"ellipsis\">keyoxide.org/6389542B98CB868DA</span><span class=\"invisible\">C73A373ED1190B780583CF6</span></a>",
+        "name": "Keyoxide"
       }
     ],
     "publicKey": {
-      "@context": "https://w3id.org/security/v1",
-      "@type": "Key",
       "id": "https://coderrrrr.site/blog#main-key",
       "owner": "https://coderrrrr.site/blog",
       "publicKeyPem": process.env.ACTIVITYPUB_PUBLIC_KEY || "MISSING_PUBLIC_KEY"
