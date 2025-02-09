@@ -5,21 +5,21 @@ export default function (req: VercelRequest, res: VercelResponse) {
   res.statusCode = 200;
   res.setHeader("Content-Type", `application/jrd+json`);
   res.end(`{
-  "subject": "acct:coder@coderrrrr.site",
+  "subject": "acct:blog@coderrrrr.site",
   "aliases": [
-    "https://coderrrrr.site/coder",
-    "https://coderrrrr.site/@coder"
+    "https://coderrrrr.site/blog",
+    "https://coderrrrr.site/@blog"
   ],
   "links": [
     {
       "rel": "http://webfinger.net/rel/profile-page",
       "type": "text/html",
-      "href": "https://coderrrrr.site/coder"
+      "href": "https://coderrrrr.site/blog"
     },
     {
       "rel": "self",
       "type": "application/activity+json",
-      "href": "https://coderrrrr.site/coder"
+      "href": "https://coderrrrr.site/blog"
     },
     {
       "rel": "http://ostatus.org/schema/1.0/subscribe",
