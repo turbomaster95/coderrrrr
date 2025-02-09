@@ -17,15 +17,24 @@ export default async function (req: VercelRequest, res: VercelResponse) {
     "followers": "https://coderrrrr.site/api/activitypub/followers",
     "sharedInbox": "https://coderrrrr.site/api/activitypub/sharedInbox",
     "inbox": "https://coderrrrr.site/api/activitypub/inbox",
+    "url": "https://coderrrrr.site/blog"
+    "published": "2025-02-09T17:01:02Z",
     "preferredUsername": "blog",
     "name": "Deva Midhun's blog",
+    "manuallyApprovesFollowers": false,
     "discoverable": true,
     "indexable": true,
-    "summary": "Software developer & self-hosting enthusiast.",
+    "memorial": false,
+    "summary": "Software developer & self-hosting enthusiast. This is a bridge between my blog and the fediverse!",
     "icon": {
       "type": "Image",
       "mediaType": "image/png",
       "url": "https://i.ibb.co/N6J5b8WS/download20250102015611.png"
+    },
+    "publicKey": {
+      "id": "https://coderrrrr.site/blog#main-key",
+      "owner": "https://coderrrrr.site/blog",
+      "publicKeyPem": process.env.ACTIVITYPUB_PUBLIC_KEY || "MISSING_PUBLIC_KEY"
     },
     "attachment": [
       {
@@ -48,11 +57,6 @@ export default async function (req: VercelRequest, res: VercelResponse) {
         "value": "<a href=\"https://keyoxide.org/6389542B98CB868DAC73A373ED1190B780583CF6\" target=\"_blank\" rel=\"nofollow noopener me\" translate=\"no\"><span class=\"invisible\">https://</span><span class=\"ellipsis\">keyoxide.org/6389542B98CB868DA</span><span class=\"invisible\">C73A373ED1190B780583CF6</span></a>",
         "name": "Keyoxide"
       }
-    ],
-    "publicKey": {
-      "id": "https://coderrrrr.site/blog#main-key",
-      "owner": "https://coderrrrr.site/blog",
-      "publicKeyPem": process.env.ACTIVITYPUB_PUBLIC_KEY || "MISSING_PUBLIC_KEY"
-    }
+    ]
   });
 }
