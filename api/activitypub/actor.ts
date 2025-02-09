@@ -26,6 +26,7 @@ export default async function (req: VercelRequest, res: VercelResponse) {
     "indexable": true,
     "memorial": false,
     "summary": "Software developer & self-hosting enthusiast. This is a bridge between my blog and the fediverse!",
+    "tag": [],
     "icon": {
       "type": "Image",
       "mediaType": "image/png",
