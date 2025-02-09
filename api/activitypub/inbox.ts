@@ -161,13 +161,13 @@ async function removeLike(message: AP.Like) {
   /*
    {
      '@context': 'https://www.w3.org/ns/activitystreams',
-     id: 'https://coderrrrr.site/coder#likes/854/undo',
+     id: 'https://coderrrrr.site/@blog#likes/854/undo',
      type: 'Undo',
-     actor: 'https://coderrrrr.site/coder',
+     actor: 'https://coderrrrr.site/@blog',
      object: {
-       id: 'https://coderrrrr.site/coder#likes/854',
+       id: 'https://coderrrrr.site/@blog#likes/854',
        type: 'Like',
-       actor: 'https://coderrrrr.site/coder',
+       actor: 'https://coderrrrr.site/@blog',
        object: 'https://coderrrrr.site/thoughts-on-web-follow/'
      }
    }
@@ -232,7 +232,7 @@ async function saveFollow(message: AP.Follow, actorInformation: AP.Actor) {
     "@context": "https://www.w3.org/ns/activitystreams",
     'id': `https://${domain}/${guid}`,
     'type': 'Accept',
-    'actor': "https://coderrrrr.site/coder",
+    'actor': "https://coderrrrr.site/@blog",
     'object': (message.actor as CoreObject).id
   };
 

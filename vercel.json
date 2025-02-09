@@ -32,7 +32,7 @@
       "destination": "/api/activitypub/authorize_interaction.ts"
     },
     {
-      "source": "/blog",
+      "source": "/@blog",
       "destination": "/api/activitypub/actor.ts"
     },
     {

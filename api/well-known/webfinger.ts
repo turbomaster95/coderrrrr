@@ -14,12 +14,12 @@ export default function (req: VercelRequest, res: VercelResponse) {
     {
       "rel": "http://webfinger.net/rel/profile-page",
       "type": "text/html",
-      "href": "https://coderrrrr.site/blog"
+      "href": "https://coderrrrr.site/@blog"
     },
     {
       "rel": "self",
       "type": "application/activity+json",
-      "href": "https://coderrrrr.site/blog"
+      "href": "https://coderrrrr.site/@blog"
     },
     {
       "rel": "http://ostatus.org/schema/1.0/subscribe",

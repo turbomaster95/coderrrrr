@@ -3,7 +3,7 @@ import { Sha256Signer } from '../../http-signature/index.js';
 import { createHash } from 'crypto';
 
 export async function sendSignedRequest(endpoint: URL, object: AP.Activity): Promise<Response> {
-  const publicKeyId = "https://coderrrrr.site/coder#main-key";
+  const publicKeyId = "https://coderrrrr.site/@blog#main-key";
   const privateKey = process.env.ACTIVITYPUB_PRIVATE_KEY;
 
   const signer = new Sha256Signer({ publicKeyId, privateKey, headerNames: ["host", "date", "digest"] });
