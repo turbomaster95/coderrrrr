@@ -36,6 +36,10 @@
       "destination": "/api/activitypub/actor.ts"
     },
     {
+      "source": "/coder",
+      "destination": "/api/activitypub/old.ts"
+    },
+    {
       "source": "/followers",
       "destination": "/api/activitypub/followers.ts"
     },
