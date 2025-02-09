@@ -11,13 +11,13 @@ export default async function (req: VercelRequest, res: VercelResponse) {
   res.status(200).setHeader("Content-Type", "application/activity+json").json({
     "@context": ["https://www.w3.org/ns/activitystreams", { "@language": "en-US" }],
     "type": "Person",
-    "id": "https://coderrrrr.site/coder",
+    "id": "https://coderrrrr.site/blog",
     "outbox": "https://coderrrrr.site/api/activitypub/outbox",
     "following": "https://coderrrrr.site/api/activitypub/following",
     "followers": "https://coderrrrr.site/api/activitypub/followers",
     "sharedInbox": "https://coderrrrr.site/api/activitypub/sharedInbox",
     "inbox": "https://coderrrrr.site/api/activitypub/inbox",
-    "preferredUsername": "coder",
+    "preferredUsername": "blog",
     "name": "Deva Midhun's blog",
     "discoverable": true,
     "indexable": true,
@@ -50,8 +50,8 @@ export default async function (req: VercelRequest, res: VercelResponse) {
     "publicKey": {
       "@context": "https://w3id.org/security/v1",
       "@type": "Key",
-      "id": "https://coderrrrr.site/coder#main-key",
-      "owner": "https://coderrrrr.site/coder",
+      "id": "https://coderrrrr.site/blog#main-key",
+      "owner": "https://coderrrrr.site/blog",
       "publicKeyPem": process.env.ACTIVITYPUB_PUBLIC_KEY || "MISSING_PUBLIC_KEY"
     }
   });
