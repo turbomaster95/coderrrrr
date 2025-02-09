@@ -1,7 +1,7 @@
 {
   "functions": {
     "api/**/*": {
-      "maxDuration": 240
+      "maxDuration": 60
     }
   },
   "crons": [{
