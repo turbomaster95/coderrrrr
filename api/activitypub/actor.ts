@@ -18,7 +18,7 @@ export default async function (req: VercelRequest, res: VercelResponse) {
     "sharedInbox": "https://coderrrrr.site/api/activitypub/sharedInbox",
     "inbox": "https://coderrrrr.site/api/activitypub/inbox",
     "url": "https://coderrrrr.site/blog"
-    "published": "2024-04-06T17:01:02Z",
+    "published": "2024-05-02T15:25:40Z",
     "preferredUsername": "blog",
     "name": "Deva Midhun's blog",
     "manuallyApprovesFollowers": false,
