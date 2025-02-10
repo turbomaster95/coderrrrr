@@ -22,7 +22,7 @@ export default function (req: VercelRequest, res: VercelResponse) {
   // You can add more supported usernames as needed.
   let profileUrl: string;
   if (username === "blog") {
-    profileUrl = "https://coderrrrr.site/blog";
+    profileUrl = "https://coderrrrr.site/@blog";
   } else {
     // If the username is not recognized, return a 404.
     res.status(404).json({ error: "User not found" });
