@@ -15,7 +15,6 @@ export default function (req: VercelRequest, res: VercelResponse) {
     res.status(400).json({ error: "Resource format not supported" });
     return;
   }
-ṣ
   const username = match[1].toLowerCase();
 
   // Determine the profile URL based on the username.
