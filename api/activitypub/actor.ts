@@ -4,7 +4,7 @@ export default async function (req: VercelRequest, res: VercelResponse) {
   const { headers } = req;
 
   if (headers.accept && headers.accept.includes("text/html")) {
-    res.redirect(302, "https://coderrrrr.site/");
+    res.redirect(302, "https://coder.is-a.dev/");
     return;
   }
 
