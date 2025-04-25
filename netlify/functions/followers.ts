@@ -1,6 +1,6 @@
 import { Handler } from '@netlify/functions';
 import { firestore } from '../../../lib/firebase';
-import { generateActor } from '../../../lib/actor';
+import { fetchActorInformation } from '../../../lib/activitypub/utils/fetchActorInformation';
 
 const handler: Handler = async (event, context) => {
   const [, , username] = event.path.split('/'); // /users/:username/followers
@@ -16,7 +16,7 @@ const handler: Handler = async (event, context) => {
       href: doc.data().follower,
     }));
 
-    const actor = await generateActor(username);
+    const actor = await fetchActorInformation(username);
 
     return {
       statusCode: 200,

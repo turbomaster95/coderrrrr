@@ -1,6 +1,6 @@
 import { Handler } from '@netlify/functions';
 import { firestore } from '../../../lib/firebase';
-import { verifySignature } from '../../../lib/verify';
+import { verifySignature } from '../../../lib/activitypub/utils/verifySignature.js';
 import { handleFollow } from '../../../lib/handleFollow';
 
 const handler: Handler = async (event, context) => {
