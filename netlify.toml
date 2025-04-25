@@ -1,0 +1,74 @@
+[build]
+functions = "netlify/functions"
+
+# Redirects from old AMP and HTML URLs
+[[redirects]]
+from = "/amp/:slug/"
+to = "/:slug/"
+status = 301
+force = true
+
+[[redirects]]
+from = "/:year/:month/:slug.html"
+to = "/:slug/"
+status = 301
+force = true
+
+# Rewrites for ActivityPub API endpoints
+[[redirects]]
+from = "/.well-known/*"
+to = "/.netlify/functions/well-known/:splat"
+status = 200
+
+[[redirects]]
+from = "/authorize_interaction"
+to = "/.netlify/functions/authorize_interaction"
+status = 200
+
+[[redirects]]
+from = "/@blog"
+to = "/.netlify/functions/actor"
+status = 200
+
+[[redirects]]
+from = "/coder"
+to = "/.netlify/functions/old"
+status = 200
+
+[[redirects]]
+from = "/followers"
+to = "/.netlify/functions/followers"
+status = 200
+
+[[redirects]]
+from = "/following"
+to = "/.netlify/functions/following"
+status = 200
+
+[[redirects]]
+from = "/inbox"
+to = "/.netlify/functions/inbox"
+status = 200
+
+[[redirects]]
+from = "/sharedInbox"
+to = "/.netlify/functions/sharedInbox"
+status = 200
+
+[[redirects]]
+from = "/outbox"
+to = "/.netlify/functions/outbox"
+status = 200
+
+# Rewrite for trailing slashes to index.html
+[[redirects]]
+from = "/:path/"
+to = "/:path/index.html"
+status = 200
+
+# Custom content-type for ActivityPub JSON
+[[headers]]
+for = "/*.json"
+  [headers.values]
+  Content-Type = "application/activity+json"
+
