@@ -1,6 +1,6 @@
 import { Handler } from '@netlify/functions';
 import { firestore } from '../../../lib/firebase';
-import { fetchActorInformation } from '../../../lib/activitypub/utils/fetchActorInformation';
+import { fetchActorInformation } from '../../../lib/activitypub/utils/fetchActorInformation.ts';
 
 const handler: Handler = async (event, context) => {
   const [, , username] = event.path.split('/'); // /users/:username/followers
