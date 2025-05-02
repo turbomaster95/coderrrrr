@@ -1,0 +1,5 @@
+# Rewrites for well-known endpoints
+[[redirects]]
+from = "/.well-known/*"
+to = "/well-known/:splat"
+status = 200
