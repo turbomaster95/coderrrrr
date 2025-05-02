@@ -1,2 +1,6 @@
 /.well-known/openpgpkey/hu/4y36rkzdjnzmk3oxaekyi5biowgr5kcz
 	Content-Type: application/octet-stream
+	Access-Control-Allow-Origin: *
+
+/.well-known/openpgpkey/policy
+	Access-Control-Allow-Origin: *
